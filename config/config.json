@@ -1,0 +1,9 @@
+{
+  "ApplicationName": "Simple EI",
+  "Port": "8000",
+  "BaseURL": "https://srv129.services.gc.ca/ei_regions/eng/",
+  "PostalCodeEndpoint": "postalcode.aspx?_code=",
+  "PostalCodePageTableID": "table",
+  "EIPageTableID": "regions"
+}
+
