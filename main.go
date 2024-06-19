@@ -112,7 +112,11 @@ func scrapeTable(url, tableID string) ([]EITableData, error) {
 				fmt.Sscan(cell.Text(), &tableData.BestWeeksRequired)
 			}
 		})
-		tableDatas = append(tableDatas, tableData)
+
+		// Check if any of the fields have been populated
+		if tableData.Province != "" || tableData.EconomicRegionCode != 0 || tableData.EconomicRegionName != "" || tableData.UnemploymentRate != 0 || tableData.InsuredHoursRequired != 0 || tableData.MinWeeksPayable != 0 || tableData.MaxWeeksPayable != 0 || tableData.BestWeeksRequired != 0 {
+			tableDatas = append(tableDatas, tableData)
+		}
 	})
 	return tableDatas, nil
 }
