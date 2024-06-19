@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -129,6 +130,7 @@ func processFunc(c config.Configuration) http.HandlerFunc {
 			return
 		}
 
+		reqPayload.PostalCode = strings.ReplaceAll(reqPayload.PostalCode, " ", "")
 		urls, err := scrapeTableURLs(c.BaseURL+c.PostalCodeEndpoint+reqPayload.PostalCode, c.PostalCodePageTableID)
 		if err != nil {
 			writeJSONResponse(w, http.StatusInternalServerError, err.Error(), nil)
