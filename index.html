@@ -49,7 +49,8 @@
         let table = '<table class="table table-bordered mt-3"><thead><tr>';
         const keys = Object.keys(data.data[0]);
         keys.forEach(key => {
-            table += `<th>${key.replace(/_/g, ' ')}</th>`;
+            const capitalizedKey = key.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()); // Capitalize first letter
+            table += `<th>${capitalizedKey}</th>`;
         });
         table += '</tr></thead><tbody>';
 
